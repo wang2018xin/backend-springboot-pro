@@ -1,0 +1,16 @@
+Mybar:
+  name: 张三
+  arrs: 赵,钱,孙,李
+  nameList:
+  - name: 刘
+    value: 刘备
+  - name: 张
+    value: 张飞
+  BarNameList:
+  - 早退次数
+  - 迟到次数
+  - 旷工天数
+  map:
+    key1: 曹操
+    key2: 曹丕
+    key3: 曹植
