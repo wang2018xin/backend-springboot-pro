@@ -1,0 +1,5 @@
+
+1. maven 国内的仓库 ?  -- setting.xml
+2. 阿里数据连接池 http://blog.csdn.net/hj7jay/article/details/51686418
+3. springboot demo. https://github.com/JeffLi1993/springboot-learning-example
+4. 

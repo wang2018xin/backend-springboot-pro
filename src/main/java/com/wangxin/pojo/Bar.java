@@ -10,8 +10,6 @@ import org.springframework.stereotype.Component;
 /**
  * 读取配置文件
  * 
- * @author wangxin
- * @qq 1696992387
  */
 @Component
 @ConfigurationProperties(locations = "classpath:conf/application-test.yml", prefix = "Mybar")
