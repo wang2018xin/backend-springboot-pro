@@ -3,3 +3,7 @@
 2. 阿里数据连接池 http://blog.csdn.net/hj7jay/article/details/51686418
 3. springboot demo. https://github.com/JeffLi1993/springboot-learning-example
 4. http://www.cnblogs.com/nanyangzp/p/4813228.html
+5. -- 10 : 一页显示多少行数据
+   -- 0  ：从第几条开始查询
+	SELECT * FROM city
+	LIMIT 0, 10
