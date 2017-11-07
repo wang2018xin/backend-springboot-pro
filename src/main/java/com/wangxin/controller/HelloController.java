@@ -1,35 +1,31 @@
 package com.wangxin.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wangxin.pojo.Bar;
+import com.wangxin.pojo.City;
+import com.wangxin.service.CityService;
 
 @RestController
-@EnableAutoConfiguration
+//@EnableAutoConfiguration
 public class HelloController {
 
 	@Autowired
-	private Bar bar;
+	private CityService cityService;
+
+	@RequestMapping(value = "/api/city", method = RequestMethod.GET)
+	public City findOneCity(@RequestParam(value = "cityName", required = true) String cityName) {
+		City c = cityService.findCityByName(cityName);
+		System.out.println(c);
+		return c;
+	}
 
 	@RequestMapping("/")
 	String home() {
 		return "Hello World!";
 	}
 
-	@RequestMapping("/hello/{myName}")
-	String index(@PathVariable String myName) {
-		return "Hello " + myName + "!!!";
-	}
-
-	/**
-	 * 读取配置文件(application-test.yml)
-	 */
-	@RequestMapping("/bar")
-	String getConf() {
-		return bar.toString();
-	}
 }
