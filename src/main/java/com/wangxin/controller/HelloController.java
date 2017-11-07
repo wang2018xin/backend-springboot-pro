@@ -6,21 +6,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wangxin.pojo.City;
-import com.wangxin.service.CityService;
+import com.wangxin.pojo.User;
+import com.wangxin.service.UserService;
 
 @RestController
-//@EnableAutoConfiguration
+// @EnableAutoConfiguration
 public class HelloController {
 
 	@Autowired
-	private CityService cityService;
+	private UserService userService;
 
-	@RequestMapping(value = "/api/city", method = RequestMethod.GET)
-	public City findOneCity(@RequestParam(value = "cityName", required = true) String cityName) {
-		City c = cityService.findCityByName(cityName);
-		System.out.println(c);
-		return c;
+	@RequestMapping(value = "/api/user", method = RequestMethod.GET)
+	public User findByName(@RequestParam(value = "userName", required = true) String userName) {
+		return userService.findByName(userName);
 	}
 
 	@RequestMapping("/")
