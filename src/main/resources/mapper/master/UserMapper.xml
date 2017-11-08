@@ -20,4 +20,27 @@
 		where id = 1
 	</select>
 
+	<!-- 登录 -->
+	<select id="login" resultMap="BaseResultMap" parameterType="java.lang.String">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM user
+		WHERE user_name = #{userName}
+		AND user_pwd = #{userPwd}
+	</select>
+
+	<!-- 用户列表 -->
+	<select id="getUserList" resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM user
+		LIMIT #{currentNum}, #{pageSize}
+	</select>
+
+	<!-- 用户列表数量 -->
+	<select id="getUserListCount" resultType="java.lang.Integer">
+		SELECT COUNT(1) as total
+		FROM user
+	</select>
+
 </mapper>

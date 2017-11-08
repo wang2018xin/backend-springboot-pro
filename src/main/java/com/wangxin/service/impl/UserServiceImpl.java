@@ -1,5 +1,9 @@
 package com.wangxin.service.impl;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +28,29 @@ public class UserServiceImpl implements UserService {
 		City city = cityDao.findByName("沈阳");
 		user.setCity(city);
 		return user;
+	}
+
+	@Override
+	public User login(String userName, String userPwd) {
+		User user = userDao.login(userName, userPwd);
+		return user;
+	}
+
+	@Override
+	public List<User> getUserList(Map<String, Object> map) {
+		Map<String, Object> param = new HashMap<String, Object>();
+		int pageNum = Integer.parseInt(map.get("pageNum").toString());
+		int pageSize = Integer.parseInt(map.get("pageSize").toString());
+		param.put("currentNum", (pageNum - 1) * pageSize);
+		param.put("pageSize", pageSize);
+		List<User> list = userDao.getUserList(param);
+		return list;
+	}
+
+	@Override
+	public Integer getUserListCount() {
+		Integer total = userDao.getUserListCount();
+		return total;
 	}
 
 }
