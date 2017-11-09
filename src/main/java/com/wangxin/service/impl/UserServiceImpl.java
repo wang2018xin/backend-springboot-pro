@@ -38,18 +38,18 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<User> getUserList(Map<String, Object> map) {
-		Map<String, Object> param = new HashMap<String, Object>();
+		// Map<String, Object> param = new HashMap<String, Object>();
 		int pageNum = Integer.parseInt(map.get("pageNum").toString());
 		int pageSize = Integer.parseInt(map.get("pageSize").toString());
-		param.put("currentNum", (pageNum - 1) * pageSize);
-		param.put("pageSize", pageSize);
-		List<User> list = userDao.getUserList(param);
+		map.put("pageNum", (pageNum - 1) * pageSize);
+		// param.put("pageSize", pageSize);
+		List<User> list = userDao.getUserList(map);
 		return list;
 	}
 
 	@Override
-	public Integer getUserListCount() {
-		Integer total = userDao.getUserListCount();
+	public Integer getUserListCount(Map<String, Object> map) {
+		Integer total = userDao.getUserListCount(map);
 		return total;
 	}
 

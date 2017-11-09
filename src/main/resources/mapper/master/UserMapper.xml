@@ -30,17 +30,31 @@
 	</select>
 
 	<!-- 用户列表 -->
-	<select id="getUserList" resultMap="BaseResultMap">
+	<select id="getUserList" parameterType="java.util.Map" resultMap="BaseResultMap">
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM user
-		LIMIT #{currentNum}, #{pageSize}
+		WHERE 1=1
+		<if test="userName != null">
+			AND user_name like CONCAT('%',#{userName},'%')
+		</if>
+		<if test="userPwd != null">
+			AND user_pwd like CONCAT('%',#{userPwd},'%')
+		</if>
+		LIMIT #{pageNum}, #{pageSize}
 	</select>
 
 	<!-- 用户列表数量 -->
-	<select id="getUserListCount" resultType="java.lang.Integer">
+	<select id="getUserListCount" parameterType="java.util.Map" resultType="java.lang.Integer">
 		SELECT COUNT(1) as total
 		FROM user
+		WHERE 1=1
+		<if test="userName != null">
+			AND user_name like CONCAT('%',#{userName},'%')
+		</if>
+		<if test="userPwd != null">
+			AND user_pwd like CONCAT('%',#{userPwd},'%')
+		</if>
 	</select>
 
 </mapper>

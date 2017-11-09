@@ -16,5 +16,5 @@ public interface UserDao {
 	
 	List<User> getUserList(Map<String, Object> map);
 	
-	Integer getUserListCount();
+	Integer getUserListCount(Map<String, Object> map);
 }

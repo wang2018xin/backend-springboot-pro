@@ -38,7 +38,7 @@ public class UserController {
 	public Map<String, Object> findUserList(@RequestBody Map<String, Object> map) {
 		Map<String, Object> result = new HashMap<String, Object>();
 		List<User> list = userService.getUserList(map);
-		Integer total = userService.getUserListCount();
+		Integer total = userService.getUserListCount(map);
 		result.put("data", list);
 		result.put("total", total);
 		return result;
